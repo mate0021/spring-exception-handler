@@ -12,6 +12,10 @@ public class FaultyController {
 
     @GetMapping("/element/{id}")
     public ResponseEntity<String> getElement(@PathVariable("id") int id) {
+        if (id > 50 && id <= 100) {
+            throw new EntityNotFoundException(String.format("%s is greater than 50", id));
+        }
+
         if (id > 100) {
             throw new IllegalArgumentException("Input value too big");
         }
@@ -22,7 +26,7 @@ public class FaultyController {
     /*
     Active only for this controller.
      */
-    @ExceptionHandler(IllegalArgumentException.class)
+//    @ExceptionHandler(IllegalArgumentException.class)
     public void handle() {
         System.out.println("Handling exception");
     }
