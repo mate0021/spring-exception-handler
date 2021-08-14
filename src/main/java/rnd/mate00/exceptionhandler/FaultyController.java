@@ -23,12 +23,13 @@ public class FaultyController {
         return new ResponseEntity<>("Proper element", HttpStatus.ACCEPTED);
     }
 
-    /*
-    Active only for this controller.
+    /**
+     * Active only for this controller.
+     * See also {@link rnd.mate00.exceptionhandler.RestResponseEntityExceptionHandler}
      */
 //    @ExceptionHandler(IllegalArgumentException.class)
     public void handle() {
-        System.out.println("Handling exception");
+        System.out.println("Handling exception in controller");
     }
 
 }
